@@ -35,14 +35,12 @@ Besides a sample configuration file is available in `conf/extra/proxy-cluster.co
 
 To enable it, simply uncomment the relevant directives from the main `httpd` configuration file (`conf/httpd.conf`):
 ```apache
-#(...)
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
 LoadModule proxy_cluster_module modules/mod_proxy_cluster.so
 LoadModule advertise_module modules/mod_advertise.so
 LoadModule manager_module modules/mod_manager.so
 LoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so
-#(...)
 Include conf/extra/proxy-cluster.conf
 ```
 

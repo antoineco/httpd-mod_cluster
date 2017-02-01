@@ -15,17 +15,17 @@ RUN set -x \
        autoconf \
        libc-dev \
   && cd /tmp \
-  && wget https://github.com/modcluster/mod_cluster/archive/"${MOD_CLUSTER_VERSION}".tar.gz -O mod_cluster.tgz \
-  && echo "${MOD_CLUSTER_MD5SUM}  /tmp/mod_cluster.tgz" | md5sum -c - \
+  && wget https://github.com/modcluster/mod_cluster/archive/"$MOD_CLUSTER_VERSION".tar.gz -O mod_cluster.tgz \
+  && echo "$MOD_CLUSTER_MD5SUM  /tmp/mod_cluster.tgz" | md5sum -c - \
   && modDir="$(tar -tf mod_cluster.tgz | head -1)" \
   && tar -xzvf mod_cluster.tgz "$modDir"native \
   && cd "$modDir"native \
   && for mod in advertise mod_manager mod_proxy_cluster mod_cluster_slotmem; do \
        cd "$mod"; \
        sh buildconf; \
-       ./configure --with-apxs="${HTTPD_PREFIX}"/bin/apxs; \
+       ./configure --with-apxs="$HTTPD_PREFIX"/bin/apxs; \
        make || exit 1; \
-       cp *.so "${HTTPD_PREFIX}"/modules; \
+       cp *.so "$HTTPD_PREFIX"/modules; \
        cd ..; \
      done \
   && cd /tmp \
