@@ -1,22 +1,19 @@
-FROM httpd:2.4
+FROM httpd:2.4-alpine
 
 MAINTAINER Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
 
-ENV MOD_CLUSTER_VERSION=1.3.5.Final \
-    MOD_CLUSTER_MD5SUM=91c54d6e87141acbbf854c39a48872c9
+ENV MOD_CLUSTER_VERSION=1.3.6.CR1 \
+    MOD_CLUSTER_MD5SUM=5925f7c1d33f998f1c5e33ff8820ba32
 
 # install mod_cluster modules
 RUN set -x \
-  && buildDeps=" \
+  && apk add --no-cache --virtual .build-deps \
        ca-certificates \
+       libressl \
        gcc \
        make \
-       wget \
        autoconf \
-  " \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends -V $buildDeps \
-  && rm -r /var/lib/apt/lists/* \
+       libc-dev \
   && cd /tmp \
   && wget https://github.com/modcluster/mod_cluster/archive/"$MOD_CLUSTER_VERSION".tar.gz -O mod_cluster.tgz \
   && echo "$MOD_CLUSTER_MD5SUM  /tmp/mod_cluster.tgz" | md5sum -c - \
@@ -33,7 +30,7 @@ RUN set -x \
      done \
   && cd /tmp \
   && rm -rf mod_cluster.tgz "$modDir" \
-  && apt-get purge -y --auto-remove $buildDeps
+  && apk del .build-deps
 
 # add example directives to main httpd configuration
 RUN proxyLoadLine="$(grep -nE "^#?LoadModule proxy_module" conf/httpd.conf | tail -1 | cut -d':' -f1)" \

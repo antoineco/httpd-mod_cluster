@@ -1,9 +1,9 @@
 # Supported tags and respective `Dockerfile` links
 
-* `1.3.5`, `1.3`, `1`, `latest` [(1.3/Dockerfile)][dockerfile]
-* `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine]
-* `1.3.6.cr1` [(1.3/Dockerfile)][dockerfile-unstable]
-* `1.3.6.cr1-alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine-unstable]
+* `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/Dockerfile)][dockerfile]
+* `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine]
+* `1.3.6.cr1-2.4`, `1.3.6.cr1` [(1.3/Dockerfile)][dockerfile-unstable]
+* `1.3.6.cr1-2.4-alpine`, `1.3.6.cr1-alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine-unstable]
 
 # What is `mod_cluster`?
 
@@ -33,7 +33,8 @@ Besides a sample configuration file is available in `conf/extra/proxy-cluster.co
   * advertise the server to the default multicast group (`224.0.1.105:23364`)
   * enable the mod_cluster status page on `/mod_cluster-manager` from the local host
 
-To enable it, simply uncomment the relevant directives from the main `httpd` configuration file (`conf/httpd.conf`):
+This configuration is **disabled** by default. To enable it, simply uncomment the relevant directives from the main `httpd` configuration file (`conf/httpd.conf`):
+
 ```apache
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_ajp_module modules/mod_proxy_ajp.so
@@ -44,9 +45,38 @@ LoadModule cluster_slotmem_module modules/mod_cluster_slotmem.so
 Include conf/extra/proxy-cluster.conf
 ```
 
-# Rebuilding tags
+# Image Variants
 
-All tags supported by this repository can be rebuilt using [Bashbrew][bashbrew], the tool used for cloning, building, tagging, and pushing the Docker official images. To do so, simply call the `bashbrew` utility, pointing it to the included `httpd-mod_cluster` definition file as in the example below:
+The `httpd-mod_cluster` images come in different flavors, each designed for a specific use case.
+
+## Base operating system
+
+### `httpd-mod_cluster:<version>`
+
+This is the defacto image, based on the [Debian](http://debian.org) operating system, available in [the `debian` official image](https://hub.docker.com/_/debian).
+
+### `httpd-mod_cluster:<version>-alpine`
+
+This image is based on the [Alpine Linux](http://alpinelinux.org) operating system, available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
+
+## Components
+
+A tagging convention determines the version of the components distributed with the `httpd-mod_cluster` image.
+
+### `<version α>`
+
+* mod_cluster release: **α**
+* httpd release: *as distributed with the [`httpd:latest`][docker-httpd] upstream image*
+
+### `<version α>-<version β>`
+
+* mod_cluster release: **α**
+* httpd release: **β** (latest patch version)
+
+# Rebuilding images
+
+All images supported by this repository can be rebuilt and tagged using [Bashbrew][bashbrew], the tool used for cloning, building, tagging, and pushing the Docker official images. To do so, simply call the `bashbrew` utility, pointing it to the included `httpd-mod_cluster` definition file as in the example below:
+
 ```
 bashbrew --library . build httpd-mod_cluster
 ```
