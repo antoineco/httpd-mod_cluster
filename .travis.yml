@@ -1,0 +1,34 @@
+language: go
+
+go:
+- 1.7.x
+
+sudo: required
+
+services:
+- docker
+
+env:
+  global:
+  - secure: U/Vvo2929qxBptve8ehCPX1eVUPtjPIHwEEqi7twm6T5BixuJwfWWchFApeMmbl5Kg3m9hEVICC/SRfWI00krIdHhaD5co0x3ddXuyyuLVUC0Plof+cvJC1lJ6Zn1GIL16S8bytdMDmBxttsxi0X719CgZ7YIqriRrYKSGTO/qo+p7uDKort+ov8BYNO2hTUkf1JVGn7dWcK5xwi8tRt0TRgj/x2TGBryDmyj3hVn9VJcqGnx58elFHvZPJkg1fz4y/Yak4IQ6aQfvxh3gWk4sfYxZDZnpF7s3VVW56mZSLpKjK6YJDCSCTVEsOBVAsqVlD+OYF7kKMRRW+iPUkts3QzrxbIn/ac8sly62E6vhRY3i+y506QV/vAtCJVD1eg89rKrwJO6Dr5sQVRgNmn8skCS8rsvcjpAYxXrPXKiGMFiUaiDZ8mkAtE4rSw01rjyMhDPDAgSZnj8baI0V9jg9QZ74RlQAUrKiR2p2iYxAkNnpP50kJE32AqgmUVaWfMnxt90jK+f3GDDVWhqtrfMrBw8H8iikdOWn/Z1qfJf5pu4fVprs9uM0kuriDdHaU7UTpvE/wgTPW64pb5i+p3x78i6fIWOK7mcuANSqKb1T4M8edkTE4SM69kPPy4BdjcuWAmsYc655iTY0lA/+Ct0LBGzq7srMsZg9pYLMDQVTY=
+  - secure: ZuSIFjIxQhxl8a6rK339cjNXhbdIq/1F0CKrfLQqd4n5nFQF++MC2DduZ6YdUUDU6eiSChb6AKla4nS49g2pArZwvFoApiIU6phKc6cCr26VkrRtm4Y2iE7hZl3utf3Ux/1KPIGC8VgD5JCaz5lfXrkvdnujJvvkXS4O9ICimubiq3ik7Qj1EwnBBqHqR5ci7TMSppgpCixmt285f31pAiTn8ODo+2fxwX35Xs6yCimnmAoUH/P1tZxTZibWGRUV8zjOdJEFttBHJUyyPY8Z3SKDXv4qjoNzbTbwEp361Tz0p+LXYbodcKnQMSrLSUp+M9EM1YHJ8YWUR0IEh+iEB5ARfPV3iqRrurSLaGTHAq0zTsC8OId/9qxfq9uTpIw89KBdDgwMAMaf4jS5ebzs9QRvbAvcwOWohlac7moNlMx5XCgZjOUkMgCZb2mdymsElPsFjjvIGPeBwLYRTfZpwk0mWQzKDec0AzTNU3wTBpg5uZRnXDNc3taEy/iSmKpBV6yaW0+V5LnWtSxgafP1eYh/ByW4mXOp5u2u87SpJ9h05g/RQvJDCrZSEiXh7862nG96lGH8+5YwzZ42J3aI0Q5BsYY3rz/hGwq3ve2C+FsT9UC0hN58IiMeT18zgHCb3tdsoIK0dM/B33Ey8mGjCffm3saGfEZpGNRq5xCQjiA=
+
+install:
+  # build Bashbrew
+- |
+    go get github.com/constabulary/gb/...
+    (
+        cd /tmp
+        git clone --depth 1 https://github.com/docker-library/official-images.git
+        cd official-images/bashbrew/go
+        gb build
+        mv bin/bashbrew "$GOPATH"/bin
+    )
+
+script:
+- repo="${PWD##*/}"
+- bashbrew --library . build "$repo" --namespace "$DOCKER_HUB_USERNAME"
+
+after_success:
+- docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD"
+- bashbrew --library . push "$repo" --namespace "$DOCKER_HUB_USERNAME"
