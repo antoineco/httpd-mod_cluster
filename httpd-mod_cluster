@@ -2,17 +2,17 @@ Maintainers: Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
 GitRepo: https://github.com/antoineco/httpd-mod_cluster.git
 
 Tags: 1.3.5-2.4, 1.3-2.4, 1-2.4, 1.3.5, 1.3, 1, latest
-GitCommit: d6e36adf2fc5b28e41033992f458140a21efa4ae
+GitCommit: 16656d642f451b5d9d54aeef21ffd4b6be184388
 Directory: 1.3
 
 Tags: 1.3.5-2.4-alpine, 1.3-2.4-alpine, 1-2.4-alpine, 1.3.5-alpine, 1.3-alpine, 1-alpine, alpine
-GitCommit: d6e36adf2fc5b28e41033992f458140a21efa4ae
+GitCommit: 16656d642f451b5d9d54aeef21ffd4b6be184388
 Directory: 1.3/alpine
 
 Tags: 1.3.6.cr1-2.4, 1.3.6.cr1
-GitCommit: f53b194e30d230b53eba1e6f569fdda61804ad15
-Directory: 1.3
+GitCommit: 16656d642f451b5d9d54aeef21ffd4b6be184388
+Directory: 1.3cr
 
 Tags: 1.3.6.cr1-2.4-alpine, 1.3.6.cr1-alpine
-GitCommit: f53b194e30d230b53eba1e6f569fdda61804ad15
-Directory: 1.3/alpine
+GitCommit: 16656d642f451b5d9d54aeef21ffd4b6be184388
+Directory: 1.3cr/alpine
