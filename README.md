@@ -73,21 +73,31 @@ A tagging convention determines the version of the components distributed with t
 * mod_cluster release: **α**
 * httpd release: **β** (latest patch version)
 
-# Rebuilding images
+# Maintenance
 
-All images supported by this repository can be rebuilt and tagged using [Bashbrew][bashbrew], the tool used for cloning, building, tagging, and pushing the Docker official images. To do so, simply call the `bashbrew` utility, pointing it to the included `httpd-mod_cluster` definition file as in the example below:
+## Rebuilding images
+
+All images in this repository can be rebuilt and tagged manually using [Bashbrew][bashbrew], the tool used for cloning, building, tagging, and pushing the Docker official images. To do so, simply call the `bashbrew` utility, pointing it to the included `httpd-mod_cluster` definition file as in the example below:
 
 ```
 bashbrew --library . build httpd-mod_cluster
 ```
 
+## Automated build pipeline
+
+Any push to the upstream [`httpd`][docker-httpd] repository or to the source repository triggers an automatic rebuild of all the images in this repository. From a high perspective the automated build pipeline looks like the below diagram:
+
+![Automated build pipeline][pipeline]
+
+
 
 [dockerfile]: https://github.com/antoineco/httpd-mod_cluster/blob/d6e36adf2fc5b28e41033992f458140a21efa4ae/1.3/Dockerfile
 [dockerfile-alpine]: https://github.com/antoineco/httpd-mod_cluster/blob/d6e36adf2fc5b28e41033992f458140a21efa4ae/1.3/alpine/Dockerfile
-[dockerfile-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/Dockerfile
-[dockerfile-alpine-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/alpine/Dockerfile
+[dockerfile-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/Dockerfile
+[dockerfile-alpine-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/alpine/Dockerfile
 [banner]: https://raw.githubusercontent.com/antoineco/httpd-mod_cluster/master/modcluster_banner_r1v2.png
 [docker-httpd]: https://hub.docker.com/_/httpd/
 [mod_cluster]: http://modcluster.io/
 [apxs]: https://httpd.apache.org/docs/2.4/programs/apxs.html
 [bashbrew]: https://github.com/docker-library/official-images/blob/master/bashbrew/README.md
+[pipeline]: https://raw.githubusercontent.com/antoineco/httpd-mod_cluster/master/build_pipeline.png
