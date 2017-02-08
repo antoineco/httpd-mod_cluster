@@ -1,9 +1,9 @@
 # Supported tags and respective `Dockerfile` links
 
-* `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/Dockerfile)][dockerfile]
-* `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine]
-* `1.3.6.cr1-2.4`, `1.3.6.cr1` [(1.3/Dockerfile)][dockerfile-unstable]
-* `1.3.6.cr1-2.4-alpine`, `1.3.6.cr1-alpine` [(1.3/alpine/Dockerfile)][dockerfile-alpine-unstable]
+* `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)][dockerfile]
+* `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)][dockerfile-alpine]
+* `1.3.6.cr1-2.4`, `1.3.6.cr1` [(1.3cr/2.4/Dockerfile)][dockerfile-unstable]
+* `1.3.6.cr1-2.4-alpine`, `1.3.6.cr1-alpine` [(1.3cr/2.4-alpine/Dockerfile)][dockerfile-alpine-unstable]
 
 # What is `mod_cluster`?
 
@@ -91,10 +91,10 @@ Any push to the upstream [`httpd`][docker-httpd] repository or to the source rep
 
 
 
-[dockerfile]: https://github.com/antoineco/httpd-mod_cluster/blob/d6e36adf2fc5b28e41033992f458140a21efa4ae/1.3/Dockerfile
-[dockerfile-alpine]: https://github.com/antoineco/httpd-mod_cluster/blob/d6e36adf2fc5b28e41033992f458140a21efa4ae/1.3/alpine/Dockerfile
-[dockerfile-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/Dockerfile
-[dockerfile-alpine-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/alpine/Dockerfile
+[dockerfile]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4/Dockerfile
+[dockerfile-alpine]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4-alpine/Dockerfile
+[dockerfile-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/2.4/Dockerfile
+[dockerfile-alpine-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/2.4-alpine/Dockerfile
 [banner]: https://raw.githubusercontent.com/antoineco/httpd-mod_cluster/master/modcluster_banner_r1v2.png
 [docker-httpd]: https://hub.docker.com/_/httpd/
 [mod_cluster]: http://modcluster.io/
