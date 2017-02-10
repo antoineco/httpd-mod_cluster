@@ -3,7 +3,7 @@
 # Generate all the repository Dockerfiles from templates
 #
 
-set -eo pipefail
+set -euo pipefail
 
 declare -A modClusterVersions=(
 	['1.3']='1.3.5.Final'
@@ -30,8 +30,9 @@ for version in "${versions[@]}"; do
 	for variant in "$version"/*/; do
 		variant="$(basename "$variant")" # "2.4" or "2.4-alpine"
 		httpdVariant="${variant%-*}" # "2.4"
-		subVariant="${variant/$httpdVariant/}" \
-			&& subVariant="${subVariant#-}" # "" or "alpine"
+		shopt -s extglob
+		subVariant="${variant##${httpdVariant}?(-)}" # "" or "alpine"
+		shopt -u extglob
 
 		baseImage='httpd'
 		case "$variant" in

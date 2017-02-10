@@ -2,8 +2,6 @@
 
 * `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)][dockerfile]
 * `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)][dockerfile-alpine]
-* `1.3.6.cr1-2.4`, `1.3.6.cr1` [(1.3cr/2.4/Dockerfile)][dockerfile-unstable]
-* `1.3.6.cr1-2.4-alpine`, `1.3.6.cr1-alpine` [(1.3cr/2.4-alpine/Dockerfile)][dockerfile-alpine-unstable]
 
 # What is `mod_cluster`?
 
@@ -75,6 +73,22 @@ A tagging convention determines the version of the components distributed with t
 
 # Maintenance
 
+## Updating configuration
+
+After performing changes to the Dockerfile templates or sample httpd configuration, regenerate the repository tree with:
+
+```
+./generate-dockerfiles.sh
+```
+
+## Updating library definition
+
+After committing changes to the repository, regenerate the library definition file with:
+
+```
+./generate-bashbrew-library.sh >| httpd-mod_cluster
+```
+
 ## Rebuilding images
 
 All images in this repository can be rebuilt and tagged manually using [Bashbrew][bashbrew], the tool used for cloning, building, tagging, and pushing the Docker official images. To do so, simply call the `bashbrew` utility, pointing it to the included `httpd-mod_cluster` definition file as in the example below:
@@ -93,8 +107,6 @@ Any push to the upstream [`httpd`][docker-httpd] repository or to the source rep
 
 [dockerfile]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4/Dockerfile
 [dockerfile-alpine]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4-alpine/Dockerfile
-[dockerfile-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/2.4/Dockerfile
-[dockerfile-alpine-unstable]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3cr/2.4-alpine/Dockerfile
 [banner]: https://raw.githubusercontent.com/antoineco/httpd-mod_cluster/master/modcluster_banner_r1v2.png
 [docker-httpd]: https://hub.docker.com/_/httpd/
 [mod_cluster]: http://modcluster.io/
