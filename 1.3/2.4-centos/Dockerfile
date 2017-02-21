@@ -1,9 +1,9 @@
-FROM __BASEIMAGE__
+FROM antoineco/httpd:2.4-centos
 
 MAINTAINER Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
 
-ENV MOD_CLUSTER_VERSION=__MODCLUSTERVERSION__ \
-    MOD_CLUSTER_MD5SUM=__MODCLUSTERMD5SUM__
+ENV MOD_CLUSTER_VERSION=1.3.5.Final \
+    MOD_CLUSTER_MD5SUM=91c54d6e87141acbbf854c39a48872c9
 
 # install mod_cluster modules
 RUN set -x \
@@ -11,14 +11,12 @@ RUN set -x \
        ca-certificates \
        gcc \
        make \
-       wget \
        autoconf \
      " \
-  && apt-get update \
-  && apt-get install -y --no-install-recommends -V $buildDeps \
-  && rm -r /var/lib/apt/lists/* \
+  && yum install -y $buildDeps \
+  && yum clean all \
   && cd /tmp \
-  && wget https://github.com/modcluster/mod_cluster/archive/"$MOD_CLUSTER_VERSION".tar.gz -O mod_cluster.tgz \
+  && curl -sSL https://github.com/modcluster/mod_cluster/archive/"$MOD_CLUSTER_VERSION".tar.gz -o mod_cluster.tgz \
   && echo "$MOD_CLUSTER_MD5SUM  /tmp/mod_cluster.tgz" | md5sum -c - \
   && modDir="$(tar -tf mod_cluster.tgz | head -1)" \
   && tar -xzvf mod_cluster.tgz "$modDir"native \
@@ -33,7 +31,7 @@ RUN set -x \
      done \
   && cd /tmp \
   && rm -rf mod_cluster.tgz "$modDir" \
-  && apt-get purge -y --auto-remove $buildDeps
+  && yum history -y undo last
 
 # add example directives to main httpd configuration
 RUN proxyLoadLine="$(grep -nE "^#?LoadModule proxy_module" conf/httpd.conf | tail -1 | cut -d':' -f1)" \

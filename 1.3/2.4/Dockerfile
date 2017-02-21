@@ -13,7 +13,7 @@ RUN set -x \
        make \
        wget \
        autoconf \
-  " \
+     " \
   && apt-get update \
   && apt-get install -y --no-install-recommends -V $buildDeps \
   && rm -r /var/lib/apt/lists/* \

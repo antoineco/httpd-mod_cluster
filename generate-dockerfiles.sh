@@ -34,7 +34,16 @@ for version in "${versions[@]}"; do
 		subVariant="${variant##${httpdVariant}?(-)}" # "" or "alpine"
 		shopt -u extglob
 
-		baseImage='httpd'
+		case "$subVariant" in
+			centos)
+				# no "centos" variant in official httpd repo
+				baseImage='antoineco\/httpd'
+				;;
+			*)
+				baseImage='httpd'
+				;;
+		esac
+
 		case "$variant" in
 			2.*)
 				baseImage+=":${httpdVariant}${subVariant:+-$subVariant}" # ":2.4" or ":2.4-alpine"
