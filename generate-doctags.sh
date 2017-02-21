@@ -40,15 +40,10 @@ dirCommit() {
 	)
 }
 
-cat <<-EOH
-Maintainers: Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
-GitRepo: https://github.com/antoineco/httpd-mod_cluster.git
-EOH
-
 # prints "$2$1$3$1...$N"
 join() {
 	local sep="$1"; shift
-	local out; printf -v out "${sep//%/%%}%s" "$@"
+	local out; printf -v out "${sep//%/%%}\`%s\`" "$@"
 	echo "${out#$sep}"
 }
 
@@ -97,11 +92,8 @@ for version in "${versions[@]}"; do
 			variantAliases+=( "${subVariantAliases[@]}" )
 		fi
 
-		echo
 		cat <<-EOE
-			Tags: $(join ', ' "${variantAliases[@]}")
-			GitCommit: $commit
-			Directory: $version/$variant
+		* $(join ', ' "${variantAliases[@]}") [($version/$variant/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/$commit/$version/$variant/Dockerfile)
 		EOE
 	done
 done

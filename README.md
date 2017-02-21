@@ -1,7 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
-* `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)][dockerfile]
-* `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)][dockerfile-alpine]
+* `1.3.5-2.4`, `1.3-2.4`, `1-2.4`, `1.3.5`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/9ea02dbb6a247873a28a4c50b049c1301c487713/1.3/2.4/Dockerfile)
+* `1.3.5-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.5-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/2c8d0db673fda30214380a8906b406320b03ef63/1.3/2.4-alpine/Dockerfile)
+* `1.3.5-2.4-centos`, `1.3-2.4-centos`, `1-2.4-centos`, `1.3.5-centos`, `1.3-centos`, `1-centos`, `centos` [(1.3/2.4-centos/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/9ea02dbb6a247873a28a4c50b049c1301c487713/1.3/2.4-centos/Dockerfile)
 
 # What is `mod_cluster`?
 
@@ -104,9 +105,6 @@ Any push to the upstream [`httpd`][docker-httpd] repository or to the source rep
 ![Automated build pipeline][pipeline]
 
 
-
-[dockerfile]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4/Dockerfile
-[dockerfile-alpine]: https://github.com/antoineco/httpd-mod_cluster/blob/master/1.3/2.4-alpine/Dockerfile
 [banner]: https://raw.githubusercontent.com/antoineco/httpd-mod_cluster/master/modcluster_banner_r1v2.png
 [docker-httpd]: https://hub.docker.com/_/httpd/
 [mod_cluster]: http://modcluster.io/
