@@ -2,8 +2,8 @@ FROM antoineco/httpd:2.4-centos
 
 MAINTAINER Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
 
-ENV MOD_CLUSTER_VERSION=1.3.5.Final \
-    MOD_CLUSTER_MD5SUM=91c54d6e87141acbbf854c39a48872c9
+ENV MOD_CLUSTER_VERSION=1.3.6.Final \
+    MOD_CLUSTER_MD5SUM=71f91477fc872018d5857ddf74edbb8e
 
 # install mod_cluster modules
 RUN set -x \
