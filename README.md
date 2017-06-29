@@ -1,8 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
-* `1.3.6-2.4`, `1.3-2.4`, `1-2.4`, `1.3.6`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/d697d21212cefa55d9658828eb80912b08177dc1/1.3/2.4/Dockerfile)
-* `1.3.6-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.6-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/d697d21212cefa55d9658828eb80912b08177dc1/1.3/2.4-alpine/Dockerfile)
-* `1.3.6-2.4-centos`, `1.3-2.4-centos`, `1-2.4-centos`, `1.3.6-centos`, `1.3-centos`, `1-centos`, `centos` [(1.3/2.4-centos/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/d697d21212cefa55d9658828eb80912b08177dc1/1.3/2.4-centos/Dockerfile)
+* `1.3.7-2.4`, `1.3-2.4`, `1-2.4`, `1.3.7`, `1.3`, `1`, `latest` [(1.3/2.4/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/29fcadbf0756e0ba5a397f79dcda8f74e3d01c5a/1.3/2.4/Dockerfile)
+* `1.3.7-2.4-alpine`, `1.3-2.4-alpine`, `1-2.4-alpine`, `1.3.7-alpine`, `1.3-alpine`, `1-alpine`, `alpine` [(1.3/2.4-alpine/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/29fcadbf0756e0ba5a397f79dcda8f74e3d01c5a/1.3/2.4-alpine/Dockerfile)
+* `1.3.7-2.4-centos`, `1.3-2.4-centos`, `1-2.4-centos`, `1.3.7-centos`, `1.3-centos`, `1-centos`, `centos` [(1.3/2.4-centos/Dockerfile)](https://github.com/antoineco/httpd-mod_cluster/blob/29fcadbf0756e0ba5a397f79dcda8f74e3d01c5a/1.3/2.4-centos/Dockerfile)
 
 # What is `mod_cluster`?
 
