@@ -10,7 +10,7 @@ declare -A modClusterVersions=(
 )
 
 declare -A modClusterMd5sums=(
-	['1.3']='ac5ad6cac05bfc2652fe8c4eb561d802'
+	['1.3']='36d9053fcfdcf561479e229bac759eef'
 )
 
 cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
