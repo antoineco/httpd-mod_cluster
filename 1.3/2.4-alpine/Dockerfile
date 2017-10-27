@@ -2,8 +2,8 @@ FROM httpd:2.4-alpine
 
 MAINTAINER Antoine Cotten <tonio.cotten@gmail.com> (@antoineco)
 
-ENV MOD_CLUSTER_VERSION=1.3.7.Final \
-    MOD_CLUSTER_MD5SUM=36d9053fcfdcf561479e229bac759eef
+ENV MOD_CLUSTER_VERSION=1.3.8.Final \
+    MOD_CLUSTER_MD5SUM=93dc6218d6dd14ae4ce24c5c09f20ab5
 
 # install mod_cluster modules
 RUN set -x \

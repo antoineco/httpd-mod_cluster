@@ -6,11 +6,11 @@
 set -euo pipefail
 
 declare -A modClusterVersions=(
-	['1.3']='1.3.7.Final'
+	['1.3']='1.3.8.Final'
 )
 
 declare -A modClusterMd5sums=(
-	['1.3']='36d9053fcfdcf561479e229bac759eef'
+	['1.3']='93dc6218d6dd14ae4ce24c5c09f20ab5'
 )
 
 cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
